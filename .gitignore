@@ -44,9 +44,8 @@ factoryConfiguration.json
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
-# *.iml
+*.iml
 # *.ipr
-.idea/*.iml
 
 # CMake
 cmake-build-*/
