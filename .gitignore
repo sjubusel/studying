@@ -1,6 +1,7 @@
 
 # Created by https://www.gitignore.io/api/java,maven,java-web,intellij,code-java
 # Edit at https://www.gitignore.io/?templates=java,maven,java-web,intellij,code-java
+# User: sjubusiel
 
 ### Code-Java ###
 # Language Support for Java(TM) by Red Hat extension for Visual Studio Code - https://marketplace.visualstudio.com/items?itemName=redhat.java
@@ -45,6 +46,7 @@ factoryConfiguration.json
 # .idea/modules
 # *.iml
 # *.ipr
+.idea/*.iml
 
 # CMake
 cmake-build-*/
