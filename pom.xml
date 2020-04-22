@@ -21,20 +21,25 @@
     </modules>
 
     <properties>
+        <!--        common-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <!--        dependencies.section-->
         <junit-jupiter-engine.version>5.6.0</junit-jupiter-engine.version>
         <commons-lang3.version>3.9</commons-lang3.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <mockito-core.version>3.3.3</mockito-core.version>
         <mockito-junit-jupiter.version>${mockito-core.version}</mockito-junit-jupiter.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
-        <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
         <jstl.version>1.2</jstl.version>
+        <!--        build.section-->
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
+        <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
+        <!--        reporting.section-->
+        <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -107,5 +112,50 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <finalName>studying</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <!-- https://mvnrepository.com/artifact/org.apache.tomcat.maven/tomcat7-maven-plugin -->
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>${tomcat7-maven-plugin.version}</version>
+                    <configuration>
+                        <url>http://localhost:8080/manager/text</url>
+                        <server>tomcat1</server>
+                        <path>/${project.build.finalName}</path>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven-war-plugin.version}</version>
+                    <configuration>
+                        <failOnMissingWebXml>false</failOnMissingWebXml>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>${cobertura-maven-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
