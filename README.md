@@ -1,4 +1,4 @@
-# studying
+# :thinking: studying :thinking:
 This repository is used while studying 
 Java Enterprise technology stack on my own.
 
