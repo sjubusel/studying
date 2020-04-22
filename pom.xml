@@ -132,7 +132,7 @@
                     <version>${tomcat7-maven-plugin.version}</version>
                     <configuration>
                         <url>http://localhost:8080/manager/text</url>
-                        <server>tomcat1</server>
+                        <server>tomcat</server>
                         <path>/${project.build.finalName}</path>
                     </configuration>
                 </plugin>
