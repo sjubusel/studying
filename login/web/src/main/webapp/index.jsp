@@ -19,7 +19,17 @@
     <title><fmt:message key="indexJsp.title" bundle="resourceBundle"/></title>
 </head>
 <body>
-<p><fmt:message key="indexJsp.pWelcome" bundle="resourceBundle"/></p>
+<table style="float: right;">
+    <tbody>
+    <tr>
+        <td>en</td>
+        <td>ru</td>
+        <td width="150px" align=right><fmt:message key="indexJsp.language" bundle="resourceBundle"/></td>
+    </tr>
+    </tbody>
+</table>
+<p><fmt:message key="indexJsp.pWelcome" bundle="resourceBundle"/>
+</p>
 <p><fmt:message key="indexJsp.currentTime"
                 bundle="resourceBundle"/> <%= Util.getDateTimeBeBy(request)%>
 </p>
