@@ -17,6 +17,11 @@ public class Util {
         request.getRequestDispatcher("/" + jspName + ".jsp").forward(request, response);
     }
 
+    public static void sendRedirect(String servletOrJsp, HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        response.sendRedirect(request.getContextPath() + "/" + servletOrJsp);
+    }
+
     public static String getDateTimeBeBy(HttpServletRequest request) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG)
                 .withLocale(request.getLocale());
