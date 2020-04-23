@@ -1,5 +1,7 @@
 package com.github.sjubusel.studying.login;
 
+import com.github.sjubusel.studying.login.impl.DefAuthUserService;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +12,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
 public class Util {
+    private static AuthUserService authUserService = DefAuthUserService.getInstance();
+
     private Util() {
     }
 
@@ -38,15 +42,7 @@ public class Util {
         return null;
     }
 
-    // FIXME: need connection to service module
     public static boolean ifCookieIsValid(Cookie cookie) {
-//        HashSet<User> authUsers = Storage.getAuthUsers();
-//        String identifier = cookie.getValue();
-//        for (User authUser : authUsers) {
-//            if (authUser.getId().equals(identifier)) {
-//                return true;
-//            }
-//        }
-        return false;
+        return authUserService.verifyUserAuthenticity(cookie.getValue());
     }
 }

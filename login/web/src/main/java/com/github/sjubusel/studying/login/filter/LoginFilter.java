@@ -20,7 +20,7 @@ public class LoginFilter implements Filter {
         if (cookie != null && Util.ifCookieIsValid(cookie)) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
-            Util.sendRedirect("login.jsp", request, response);
+            Util.sendRedirect("login", request, response);
         }
     }
 

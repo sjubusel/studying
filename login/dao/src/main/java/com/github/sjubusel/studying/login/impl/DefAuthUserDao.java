@@ -4,6 +4,7 @@ import com.github.sjubusel.studying.login.AuthUser;
 import com.github.sjubusel.studying.login.AuthUserDao;
 import com.github.sjubusel.studying.login.Role;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -43,5 +44,16 @@ public class DefAuthUserDao implements AuthUserDao {
     @Override
     public void saveAuthUser(AuthUser user) {
         authUserMap.putIfAbsent(user.getLogin(), user);
+    }
+
+    @Override
+    public boolean containsThisUserId(String userId) {
+        Collection<AuthUser> authUsers = authUserMap.values();
+        for (AuthUser authUser : authUsers) {
+            if (authUser.getUserId().equals(userId)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
