@@ -1,6 +1,7 @@
 package com.github.sjubusel.studying.login;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -26,5 +27,26 @@ public class Util {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG)
                 .withLocale(request.getLocale());
         return ZonedDateTime.now().format(dateTimeFormatter);
+    }
+
+    public static Cookie getCookieIfExists(Cookie[] cookies, String cookieName) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals(cookieName)) {
+                return cookie;
+            }
+        }
+        return null;
+    }
+
+    // FIXME: need connection to service module
+    public static boolean ifCookieIsValid(Cookie cookie) {
+//        HashSet<User> authUsers = Storage.getAuthUsers();
+//        String identifier = cookie.getValue();
+//        for (User authUser : authUsers) {
+//            if (authUser.getId().equals(identifier)) {
+//                return true;
+//            }
+//        }
+        return false;
     }
 }
