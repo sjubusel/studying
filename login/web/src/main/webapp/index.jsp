@@ -22,8 +22,13 @@
 <table style="float: right;">
     <tbody>
     <tr>
-        <td>en</td>
-        <td>ru</td>
+        <td>
+            <button formaction="/language" formmethod="post" name="lang" value="english" type="submit">en
+            </button>
+        </td>
+        <td>
+            <button formaction="/language" formmethod="post" name="lang" value="russian" type="submit">ru</button>
+        </td>
         <td width="150px" align=right><fmt:message key="indexJsp.language" bundle="resourceBundle"/></td>
     </tr>
     </tbody>
