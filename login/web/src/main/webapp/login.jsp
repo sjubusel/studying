@@ -14,6 +14,12 @@
 <html>
 <head>
     <title><fmt:message key="loginJsp.title" var="${text}"/></title>
+    <style>
+        .error {
+            color: red;
+            font-size: 200%;
+        }
+    </style>
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/login" method="post">
@@ -28,5 +34,6 @@
     <input type="submit">
 </form>
 <p><a href="${pageContext.request.contextPath}/register"><fmt:message var="${text}" key="loginJsp.signUp"/></a></p>
+<p class="error">${requestScope.error}</p>
 </body>
 </html>
