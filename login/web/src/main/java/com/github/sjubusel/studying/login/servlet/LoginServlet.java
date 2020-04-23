@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
         if (Util.getCookieIfExists(req.getCookies(), "logged") == null) {
             Util.forwardToJsp("login", req, resp);
         }
-        Util.sendRedirect("index", req, resp);
+        Util.sendRedirect("resources", req, resp);
     }
 
     @Override
