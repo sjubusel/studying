@@ -56,4 +56,9 @@ public class DefAuthUserDao implements AuthUserDao {
         }
         return false;
     }
+
+    @Override
+    public boolean containsLogin(String login) {
+        return authUserMap.containsKey(login);
+    }
 }

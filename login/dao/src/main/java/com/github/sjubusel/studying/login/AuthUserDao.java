@@ -6,4 +6,6 @@ public interface AuthUserDao {
     void saveAuthUser(AuthUser user);
 
     boolean containsThisUserId(String userId);
+
+    boolean containsLogin(String login);
 }
