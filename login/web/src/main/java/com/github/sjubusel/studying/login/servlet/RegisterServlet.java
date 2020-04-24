@@ -30,6 +30,7 @@ public class RegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
         AuthUser user = authUserService.register(login, password);
         if (user != null) {
+            req.getSession().setAttribute("authUser", user);
             resp.addCookie(Util.createLongTimeCookie(user.getUserId()));
             Util.sendRedirect("/resources", req, resp);
         } else {

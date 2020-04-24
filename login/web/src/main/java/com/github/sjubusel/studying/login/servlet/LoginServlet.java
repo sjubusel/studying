@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         AuthUser user = authUserService.login(login, password);
         if (user != null) {
+            req.getSession().setAttribute("authUser", user);
             resp.addCookie(Util.createLongTimeCookie(user.getUserId()));
             Util.sendRedirect("/resources", req, resp);
         } else {
