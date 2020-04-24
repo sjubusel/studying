@@ -22,6 +22,20 @@
     </style>
 </head>
 <body>
+<table style="float: right;">
+    <tbody>
+    <tr>
+        <td>
+            <button formaction="/language" formmethod="post" name="lang" value="english" type="submit">en
+            </button>
+        </td>
+        <td>
+            <button formaction="/language" formmethod="post" name="lang" value="russian" type="submit">ru</button>
+        </td>
+        <td width="150px" align=right><fmt:message key="indexJsp.language" bundle="${text}"/></td>
+    </tr>
+    </tbody>
+</table>
 <form action="${pageContext.request.contextPath}/login" method="post">
     <label>
         <fmt:message var="${text}" key="loginJsp.loginText"/>:
