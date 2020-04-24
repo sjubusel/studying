@@ -13,7 +13,7 @@ public class DefNewsArticleDao implements NewsArticleDao {
         this.articles = new LinkedHashMap<>();
         ZonedDateTime dateTime = ZonedDateTime.now();
         this.articles.put(dateTime, new NewsArticle("TempHeader", dateTime,
-                "Text text text", UUID.randomUUID().toString()));
+                "Text text text", UUID.randomUUID().toString(), "CREATOR"));
     }
 
     private static volatile NewsArticleDao instance;
