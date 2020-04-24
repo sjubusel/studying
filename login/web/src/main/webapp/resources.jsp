@@ -14,6 +14,7 @@
     <title>Private News</title>
 </head>
 <body>
+<a href="${pageContext.request.contextPath}/logout">logout</a>
 <c:if test="${requestScope.articles != null}">
     <c:forEach items="${requestScope.articles}" var="article">
         <h2><c:out value="${article.value.header}"/></h2>
