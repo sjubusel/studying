@@ -27,7 +27,7 @@ public class Util {
         response.sendRedirect(request.getContextPath() + "/" + servletOrJsp);
     }
 
-    public static String getDateTimeBeBy(HttpServletRequest request) {
+    public static String getDateTime(HttpServletRequest request) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG)
                 .withLocale(request.getLocale());
         return ZonedDateTime.now().format(dateTimeFormatter);

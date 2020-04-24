@@ -36,7 +36,7 @@
 <p><fmt:message key="indexJsp.pWelcome" bundle="${text}"/>
 </p>
 <p><fmt:message key="indexJsp.currentTime"
-                bundle="${text}"/> <%= Util.getDateTimeBeBy(request)%>
+                bundle="${text}"/> <%= Util.getDateTime(request)%>
 </p>
 <p>
     <fmt:message key="indexJsp.linkToResources_p1" bundle="${text}"/> <a
