@@ -14,6 +14,12 @@
 <html>
 <head>
     <title><fmt:message key="registerJsp.title" var="${text}"/></title>
+    <style>
+        .error {
+            color: red;
+            font-size: 200%;
+        }
+    </style>
 </head>
 <body>
 <h1><fmt:message var="${text}" key="registerJsp.bodyH1"/>:</h1>
@@ -30,5 +36,7 @@
     </label>
     <input type="submit">
 </form>
+
+<p class="error">${requestScope.error}</p>
 </body>
 </html>
