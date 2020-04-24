@@ -47,14 +47,14 @@ public class DefAuthUserDao implements AuthUserDao {
     }
 
     @Override
-    public boolean containsThisUserId(String userId) {
+    public AuthUser getByUserId(String userId) {
         Collection<AuthUser> authUsers = authUserMap.values();
         for (AuthUser authUser : authUsers) {
             if (authUser.getUserId().equals(userId)) {
-                return true;
+                return authUser;
             }
         }
-        return false;
+        return null;
     }
 
     @Override

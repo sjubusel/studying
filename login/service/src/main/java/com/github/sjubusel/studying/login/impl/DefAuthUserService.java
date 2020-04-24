@@ -37,7 +37,7 @@ public class DefAuthUserService implements AuthUserService {
 
     @Override
     public boolean verifyUserAuthenticity(String userId) {
-        return authUserDao.containsThisUserId(userId);
+        return authUserDao.getByUserId(userId) != null;
     }
 
     @Override
