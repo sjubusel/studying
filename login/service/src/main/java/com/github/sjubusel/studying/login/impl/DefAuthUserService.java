@@ -35,6 +35,7 @@ public class DefAuthUserService implements AuthUserService {
         }
     }
 
+    @Override
     public AuthUser login(String userId) {
         authUserDao.getByUserId(userId);
         return null;
