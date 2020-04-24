@@ -3,6 +3,9 @@ package com.github.sjubusel.studying.login.impl;
 import com.github.sjubusel.studying.login.AuthUser;
 import com.github.sjubusel.studying.login.AuthUserDao;
 import com.github.sjubusel.studying.login.AuthUserService;
+import com.github.sjubusel.studying.login.Role;
+
+import java.util.UUID;
 
 public class DefAuthUserService implements AuthUserService {
     private AuthUserDao authUserDao = DefAuthUserDao.getInstance();
@@ -35,5 +38,15 @@ public class DefAuthUserService implements AuthUserService {
     @Override
     public boolean verifyUserAuthenticity(String userId) {
         return authUserDao.containsThisUserId(userId);
+    }
+
+    @Override
+    public AuthUser register(String login, String password) {
+        if (!authUserDao.containsLogin(login)) {
+            authUserDao.saveAuthUser(new AuthUser(login, password, Role.USER, UUID.randomUUID().toString()));
+            return authUserDao.getByLogin(login);
+        } else {
+            return null;
+        }
     }
 }
