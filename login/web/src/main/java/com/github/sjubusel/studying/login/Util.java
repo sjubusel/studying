@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Locale;
 
 public class Util {
     private static AuthUserService authUserService = DefAuthUserService.getInstance();
@@ -33,6 +34,18 @@ public class Util {
         return ZonedDateTime.now().format(dateTimeFormatter);
     }
 
+    public static String getZonedDateTimeToString(ZonedDateTime zonedDateTime, Locale locale) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG)
+                .withLocale(locale);
+        return zonedDateTime.format(dateTimeFormatter);
+    }
+
+    public static Cookie createLongTimeCookie(String value) {
+        Cookie cookie = new Cookie("logged", value);
+        cookie.setMaxAge(24 * 60 * 60);
+        return cookie;
+    }
+
     public static Cookie getCookieIfExists(Cookie[] cookies, String cookieName) {
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals(cookieName)) {
@@ -44,11 +57,5 @@ public class Util {
 
     public static boolean ifCookieIsValid(Cookie cookie) {
         return authUserService.verifyUserAuthenticity(cookie.getValue());
-    }
-
-    public static Cookie createLongTimeCookie(String value) {
-        Cookie cookie = new Cookie("logged", value);
-        cookie.setMaxAge(24 * 60 * 60);
-        return cookie;
     }
 }
