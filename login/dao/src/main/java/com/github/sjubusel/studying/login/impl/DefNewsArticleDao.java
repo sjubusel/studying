@@ -3,6 +3,7 @@ package com.github.sjubusel.studying.login.impl;
 import com.github.sjubusel.studying.login.NewsArticle;
 import com.github.sjubusel.studying.login.NewsArticleDao;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -12,7 +13,7 @@ public class DefNewsArticleDao implements NewsArticleDao {
 
     private DefNewsArticleDao() {
         this.articles = new ArrayList<>();
-        this.articles.add(new NewsArticle("TempHeader", 0L,
+        this.articles.add(new NewsArticle("TempHeader", ZonedDateTime.now(),
                 "Text text text", UUID.randomUUID().toString()));
     }
 
