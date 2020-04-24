@@ -31,17 +31,11 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         AuthUser user = authUserService.login(login, password);
         if (user != null) {
-            resp.addCookie(createLongTimeCookie(user.getUserId()));
+            resp.addCookie(Util.createLongTimeCookie(user.getUserId()));
             Util.sendRedirect("/resources", req, resp);
         } else {
             req.setAttribute("error", "login or password invalid");
             Util.forwardToJsp("login", req, resp);
         }
-    }
-
-    private Cookie createLongTimeCookie(String value) {
-        Cookie cookie = new Cookie("logged", value);
-        cookie.setMaxAge(24 * 60 * 60);
-        return cookie;
     }
 }

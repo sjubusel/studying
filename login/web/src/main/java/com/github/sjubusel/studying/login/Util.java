@@ -45,4 +45,10 @@ public class Util {
     public static boolean ifCookieIsValid(Cookie cookie) {
         return authUserService.verifyUserAuthenticity(cookie.getValue());
     }
+
+    public static Cookie createLongTimeCookie(String value) {
+        Cookie cookie = new Cookie("logged", value);
+        cookie.setMaxAge(24 * 60 * 60);
+        return cookie;
+    }
 }
