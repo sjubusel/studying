@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @WebServlet(value = {"/resources"})
 public class ResourcesServlet extends HttpServlet {
@@ -30,5 +31,15 @@ public class ResourcesServlet extends HttpServlet {
         }
         req.setAttribute("articles", articles);
         Util.forwardToJsp("resources", req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String heading = req.getParameter("heading");
+        String bodyArticle = req.getParameter("bodyArticle");
+        String author = req.getParameter("author");
+        newArticleService.saveArticle(new NewsArticle(heading, ZonedDateTime.now(),
+                bodyArticle, UUID.randomUUID().toString(), author));
+        Util.sendRedirect("resources", req, resp);
     }
 }

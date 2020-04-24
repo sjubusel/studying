@@ -34,7 +34,7 @@
             Text<br/>
             <input type="text" name="bodyArticle">
         </label>
-        <input type="hidden" name="" value="${sessionScope.authUser.login}">
+        <input type="hidden" name="author" value="${sessionScope.authUser.login}">
         <input type="submit">
     </form>
 </c:if>
