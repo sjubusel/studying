@@ -1,9 +1,10 @@
 package com.github.sjubusel.studying.login;
 
-import java.util.List;
+import java.time.ZonedDateTime;
+import java.util.Map;
 
 public interface NewsArticleDao {
-    List<NewsArticle> getArticles();
+    Map<ZonedDateTime, NewsArticle> getArticles();
 
     String save(NewsArticle article);
 }

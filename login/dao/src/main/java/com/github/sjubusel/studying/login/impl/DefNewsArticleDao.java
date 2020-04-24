@@ -4,16 +4,15 @@ import com.github.sjubusel.studying.login.NewsArticle;
 import com.github.sjubusel.studying.login.NewsArticleDao;
 
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class DefNewsArticleDao implements NewsArticleDao {
-    private List<NewsArticle> articles;
+    private Map<ZonedDateTime, NewsArticle> articles;
 
     private DefNewsArticleDao() {
-        this.articles = new ArrayList<>();
-        this.articles.add(new NewsArticle("TempHeader", ZonedDateTime.now(),
+        this.articles = new LinkedHashMap<>();
+        ZonedDateTime dateTime = ZonedDateTime.now();
+        this.articles.put(dateTime, new NewsArticle("TempHeader", dateTime,
                 "Text text text", UUID.randomUUID().toString()));
     }
 
@@ -33,13 +32,13 @@ public class DefNewsArticleDao implements NewsArticleDao {
     }
 
     @Override
-    public List<NewsArticle> getArticles() {
+    public Map<ZonedDateTime, NewsArticle> getArticles() {
         return articles;
     }
 
     @Override
     public String save(NewsArticle article) {
-        articles.add(article);
+        articles.put(article.getArticleDate(), article);
         return article.getNewsId();
     }
 }
