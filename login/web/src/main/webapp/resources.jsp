@@ -15,7 +15,28 @@
 </head>
 <body>
 <c:if test="${requestScope.articles != null}">
+    <c:forEach items="${requestScope.articles}" var="article">
+        <h2><c:out value="${article.value.header}"/></h2>
+        <p><c:out value="${article.key}"/></p>
+        <p><c:out value="${article.value.text}"/></p>
+        <p>$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$</p>
+    </c:forEach>
+</c:if>
 
+<c:if test="${sessionScope.authUser.role == 'ADMIN' }">
+    <form action="${pageContext.request.contextPath}/register" method="post">
+        <label>
+            Залоговок<br/>
+            <input type="text" name="heading">
+        </label>
+
+        <label>
+            Text<br/>
+            <input type="text" name="bodyArticle">
+        </label>
+        <input type="hidden" name="" value="${sessionScope.authUser.login}">
+        <input type="submit">
+    </form>
 </c:if>
 </body>
 </html>
