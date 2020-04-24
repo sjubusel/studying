@@ -6,7 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(value = {"/index.jsp", "/resources"})
+@WebFilter(value = {"/index", "/index.jsp", "/resources", "/resources.jsp",
+        "/login", "/login.jsp", "/register", "/register.jsp"})
 public class LanguageFilter implements Filter {
 
     @Override
