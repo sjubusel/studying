@@ -1,12 +1,14 @@
 package com.github.sjubusel.studying.login;
 
+import java.time.ZonedDateTime;
+
 public class NewsArticle {
     String header;
-    long articleDate;
+    ZonedDateTime articleDate;
     String text;
     String newsId;
 
-    public NewsArticle(String header, long articleDate, String text, String newsId) {
+    public NewsArticle(String header, ZonedDateTime articleDate, String text, String newsId) {
         this.header = header;
         this.articleDate = articleDate;
         this.text = text;
@@ -21,11 +23,11 @@ public class NewsArticle {
         this.header = header;
     }
 
-    public long getArticleDate() {
+    public ZonedDateTime getArticleDate() {
         return articleDate;
     }
 
-    public void setArticleDate(long articleDate) {
+    public void setArticleDate(ZonedDateTime articleDate) {
         this.articleDate = articleDate;
     }
 
