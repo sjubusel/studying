@@ -1,5 +1,7 @@
 package com.github.sjubusel.studying.login.servlet;
 
+import com.github.sjubusel.studying.login.Util;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,14 +11,9 @@ import java.io.IOException;
 
 @WebServlet(value = "/index")
 public class IndexServlet extends HttpServlet {
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.service(req, resp);
-    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        super.doGet(req, resp);
+        Util.forwardToJsp("index", req, resp);
     }
 }
