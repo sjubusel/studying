@@ -35,6 +35,7 @@ public class ResourcesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String heading = req.getParameter("heading");
         String bodyArticle = req.getParameter("bodyArticle");
         String author = req.getParameter("author");
