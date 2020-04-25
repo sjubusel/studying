@@ -18,7 +18,7 @@
     <title><fmt:message key="indexJsp.title" bundle="${text}"/></title>
 </head>
 <body>
-
+<%-- todo create FORM instead of buttons --%>
 <table style="float: right;">
     <tbody>
     <tr>
@@ -40,7 +40,8 @@
     <fmt:message key="indexJsp.currentTime" bundle="${text}"/> <%= Util.getDateTime(request)%>
 </p>
 
-<p><fmt:message key="indexJsp.linkToResources_p1" bundle="${text}"/>
+<p>
+    <fmt:message key="indexJsp.linkToResources_p1" bundle="${text}"/>
     <a href="${pageContext.request.contextPath}/resources">
         <fmt:message key="indexJsp.linkToResources_p2" bundle="${text}"/>
     </a>
