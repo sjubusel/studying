@@ -29,7 +29,7 @@
         <td>
             <button formaction="/language" formmethod="post" name="lang" value="russian" type="submit">ru</button>
         </td>
-        <td style="width: 150px; alignment: left"><fmt:message key="indexJsp.language" bundle="${text}"/></td>
+        <td style="width: 150px; alignment: right"><fmt:message key="indexJsp.language" bundle="${text}"/></td>
     </tr>
     </tbody>
 </table>
