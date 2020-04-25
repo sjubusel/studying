@@ -32,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
         if (user != null) {
             req.getSession().setAttribute("authUser", user);
             resp.addCookie(Util.createLongTimeCookie(user.getUserId()));
-            Util.sendRedirect("/resources", req, resp);
+            Util.sendRedirect("resources", req, resp);
         } else {
             req.setAttribute("error", "login is already used by another user");
             Util.forwardToJsp("register", req, resp);

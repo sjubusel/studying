@@ -20,8 +20,9 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (Util.getCookieIfExists(req.getCookies(), "logged") == null) {
             Util.forwardToJsp("login", req, resp);
+        } else {
+            Util.sendRedirect("resources", req, resp);
         }
-        Util.sendRedirect("resources", req, resp);
     }
 
     @Override
@@ -32,7 +33,7 @@ public class LoginServlet extends HttpServlet {
         if (user != null) {
             req.getSession().setAttribute("authUser", user);
             resp.addCookie(Util.createLongTimeCookie(user.getUserId()));
-            Util.sendRedirect("/resources", req, resp);
+            Util.sendRedirect("resources", req, resp);
         } else {
             req.setAttribute("error", "login or password invalid");
             Util.forwardToJsp("login", req, resp);

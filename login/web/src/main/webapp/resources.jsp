@@ -5,16 +5,18 @@
   Time: 15:02
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
 <head>
     <title>Private News</title>
 </head>
 <body>
+
 <a href="${pageContext.request.contextPath}/logout">logout</a>
+
 <c:if test="${requestScope.articles != null}">
     <c:forEach items="${requestScope.articles}" var="article">
         <h2><c:out value="${article.value.header}"/></h2>
@@ -28,16 +30,17 @@
     <form action="${pageContext.request.contextPath}/register" method="post">
         <label>
             Залоговок<br/>
-            <input type="text" name="heading">
+            <input type="text" name="heading"><br/>
         </label>
 
         <label>
             Text<br/>
-            <input type="text" name="bodyArticle">
+            <input type="text" name="bodyArticle"><br/>
         </label>
-        <input type="hidden" name="author" value="${sessionScope.authUser.login}">
-        <input type="submit">
+        <input type="hidden" name="author" value="${sessionScope.authUser.login}"><br/>
+        <input type="submit"><br/>
     </form>
 </c:if>
+
 </body>
 </html>
