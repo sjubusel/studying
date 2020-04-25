@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(value = {"/resources"})
+@WebFilter(value = {"/resources", "/resources.jsp"})
 public class LoginFilter implements Filter {
     private AuthUserService authUserService = DefAuthUserService.getInstance();
 
