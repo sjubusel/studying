@@ -46,10 +46,12 @@ public class Util {
         return cookie;
     }
 
-    public static Cookie getCookieIfExists(Cookie[] cookies, String cookieName) {
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals(cookieName)) {
-                return cookie;
+    public static Cookie getCookieIfExists(String cookieName, Cookie[] cookies) {
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals(cookieName)) {
+                    return cookie;
+                }
             }
         }
         return null;

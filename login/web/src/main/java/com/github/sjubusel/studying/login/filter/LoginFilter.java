@@ -21,7 +21,7 @@ public class LoginFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
-        Cookie cookie = Util.getCookieIfExists(request.getCookies(), "logged");
+        Cookie cookie = Util.getCookieIfExists("logged", request.getCookies());
         if (cookie != null && Util.ifCookieIsValid(cookie)) {
             if (session.getAttribute("authUser") == null) {
                 session.setAttribute("authUser", authUserService.login(cookie.getValue()));
