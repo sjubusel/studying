@@ -16,7 +16,7 @@ public class LanguageFilter implements Filter {
 
     /**
      * an overridden method that verifies whether session contains an attribute "language", which is to be used in order
-     * to use appropriate (repository path: login/web/src/main/resources/resourceBundle.properties)
+     * to use appropriate Bundle (repository path: login/web/src/main/resources/resourceBundle.properties)
      *
      * @param servletRequest  a request that is to be forwarded to servlets/jsps, that are being filtered by this filter
      * @param servletResponse a request that is to be forwarded to servlets/jsps, that are being filtered by this filter
