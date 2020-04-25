@@ -2,7 +2,6 @@ package com.github.sjubusel.studying.login.servlet;
 
 import com.github.sjubusel.studying.login.Util;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -13,10 +12,10 @@ import java.io.IOException;
 @WebServlet(value = {"/logout"})
 public class LogoutServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.getSession().removeAttribute("authUser");
         req.getSession().invalidate();
         resp.addCookie(new Cookie("logged", "0"));
-        Util.sendRedirect("login.jsp", req, resp);
+        Util.sendRedirect("index", req, resp);
     }
 }
