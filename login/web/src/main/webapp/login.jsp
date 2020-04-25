@@ -1,3 +1,4 @@
+<%--TODO add a link to "/index"--%>
 <%--
   Created by IntelliJ IDEA.
   User: SB

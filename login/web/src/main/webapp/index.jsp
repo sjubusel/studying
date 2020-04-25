@@ -18,7 +18,7 @@
     <title><fmt:message key="indexJsp.title" bundle="${text}"/></title>
 </head>
 <body>
-<%-- todo create FORM instead of buttons --%>
+<%-- TODO create new .jsp with this table and then include it in login.jsp, register.jsp, resourcecs.jsp  --%>
 <table style="float: right;">
     <tbody>
     <tr>
@@ -46,7 +46,7 @@
 </table>
 
 <p><fmt:message key="indexJsp.pWelcome" bundle="${text}"/></p>
-
+<%--TODO think over how to connect dateTime to sessionAttribute "language"--%>
 <p>
     <fmt:message key="indexJsp.currentTime" bundle="${text}"/> <%= Util.getDateTime(request)%>
 </p>

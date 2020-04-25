@@ -1,3 +1,5 @@
+<%--TODO add a link to "/index"--%>
+<%--TODO add bundle--%>
 <%--
   Created by IntelliJ IDEA.
   User: SB
