@@ -9,6 +9,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<fmt:setLocale value="${sessionScope.language}"/>
+<fmt:setBundle basename="resourceBundle" var="text"/>
+
 <html>
 <head>
     <title>Private News</title>
@@ -16,6 +19,32 @@
 <body>
 
 <a href="${pageContext.request.contextPath}/logout">logout</a>
+
+<table style="float: right;">
+    <tbody>
+    <tr>
+        <td>
+            <form method="post" action="${pageContext.request.contextPath}/language">
+                <button formaction="${pageContext.request.contextPath}/language" formmethod="post" name="lang"
+                        value="english" type="submit">en
+                </button>
+            </form>
+        </td>
+        <td>
+            <form method="post" action="${pageContext.request.contextPath}/language">
+                <button formaction="${pageContext.request.contextPath}/language" formmethod="post" name="lang"
+                        value="russian" type="submit">ru
+                </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td style="width: 150px; alignment: right"><fmt:message key="indexJsp.language" bundle="${text}"/></td>
+    </tr>
+    </tfoot>
+</table>
 
 <c:if test="${requestScope.articles != null}">
     <c:forEach items="${requestScope.articles}" var="article">
