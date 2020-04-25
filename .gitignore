@@ -142,3 +142,7 @@ buildNumber.properties
 # End of https://www.gitignore.io/api/java,maven,java-web,intellij,code-java
 /.idea/
 /login/web/.idea/
+/login/web/src/main/resources/native2asciiFromTxtToProperties.bat
+/login/web/src/main/resources/resourceBundle.txt
+/login/web/src/main/resources/resourceBundle_en_US.txt
+/login/web/src/main/resources/resourceBundle_ru_RU.txt
