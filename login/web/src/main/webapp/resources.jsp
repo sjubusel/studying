@@ -1,5 +1,4 @@
 <%--TODO add a link to "/index"--%>
-<%--TODO add bundle--%>
 <%--
   Created by IntelliJ IDEA.
   User: SB
@@ -16,11 +15,11 @@
 
 <html>
 <head>
-    <title>Private News</title>
+    <title><fmt:message bundle="${text}" key="resourcesJsp.title"/></title>
 </head>
 <body>
 
-<a href="${pageContext.request.contextPath}/logout">logout</a>
+<a href="${pageContext.request.contextPath}/logout"><fmt:message bundle="${text}" key="resourcesJsp.logout"/></a>
 
 <table style="float: right;">
     <tbody>
@@ -61,12 +60,12 @@
 <c:if test="${sessionScope.authUser.role == 'ADMIN' }">
     <form action="${pageContext.request.contextPath}/resources" method="post">
         <label>
-            Залоговок<br/>
+            <fmt:message bundle="${text}" key="resourcesJsp.newsHeading"/><br/>
             <input type="text" name="heading"><br/>
         </label>
 
         <label>
-            Text<br/>
+            <fmt:message bundle="${text}" key="resourcesJsp.newsText"/><br/>
             <input type="text" name="bodyArticle"><br/>
         </label>
         <input type="hidden" name="author" value="${sessionScope.authUser.login}"><br/>
