@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
@@ -24,9 +25,12 @@ public class ResourcesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<ZonedDateTime, NewsArticle> newsArticles = newArticleService.getNewsArticles();
         Map<String, NewsArticle> articles = new LinkedHashMap<>();
+        String languageSessionAttr = (String) req.getSession().getAttribute("language");
+        String[] localeParts = languageSessionAttr.split("_");
         for (Map.Entry<ZonedDateTime, NewsArticle> entry : newsArticles.entrySet()) {
             ZonedDateTime zonedDateTime = entry.getKey();
-            String localeDateTime = Util.getZonedDateTimeToString(zonedDateTime, req.getLocale());
+            String localeDateTime = Util.getZonedDateTimeToString(zonedDateTime,
+                    new Locale(localeParts[0], localeParts[1]));
             articles.put(localeDateTime, entry.getValue());
         }
         req.setAttribute("articles", articles);
@@ -34,7 +38,7 @@ public class ResourcesServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
         String heading = req.getParameter("heading");
         String bodyArticle = req.getParameter("bodyArticle");

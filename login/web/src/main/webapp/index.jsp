@@ -22,9 +22,9 @@
 <%@ include file="pseudoHeader.jsp" %>
 
 <p><fmt:message key="indexJsp.pWelcome" bundle="${text}"/></p>
-<%--TODO think over how to connect dateTime to sessionAttribute "language"--%>
+
 <p>
-    <fmt:message key="indexJsp.currentTime" bundle="${text}"/> <%= Util.getDateTime(request)%>
+    <fmt:message key="indexJsp.currentTime" bundle="${text}"/> <%= Util.getDateTime(session.getAttribute("language"))%>
 </p>
 
 <p>

@@ -28,9 +28,10 @@ public class Util {
         response.sendRedirect(request.getContextPath() + "/" + servletOrJsp);
     }
 
-    public static String getDateTime(HttpServletRequest request) {
+    public static String getDateTime(Object language) {
+        String[] localeParts = ((String) language).split("_");
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG, FormatStyle.LONG)
-                .withLocale(request.getLocale());
+                .withLocale(new Locale(localeParts[0], localeParts[1]));
         return ZonedDateTime.now().format(dateTimeFormatter);
     }
 
