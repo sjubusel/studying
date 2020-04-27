@@ -1,4 +1,5 @@
-<a href="${pageContext.request.contextPath}/index">Home</a>
+<a href="${pageContext.request.contextPath}/index"><fmt:message bundle="${text}"
+                                                                key="pseudoHeaderJsp.homepageLink"/></a>
 
 <table style="float: right;">
     <tbody>
