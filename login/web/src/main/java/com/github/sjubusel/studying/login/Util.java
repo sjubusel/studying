@@ -1,6 +1,6 @@
 package com.github.sjubusel.studying.login;
 
-import com.github.sjubusel.studying.login.impl.DefAuthUserService;
+import com.github.sjubusel.studying.login.implementation.DefAuthUserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;

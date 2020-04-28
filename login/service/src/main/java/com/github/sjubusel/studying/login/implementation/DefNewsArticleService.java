@@ -1,8 +1,9 @@
-package com.github.sjubusel.studying.login.impl;
+package com.github.sjubusel.studying.login.implementation;
 
 import com.github.sjubusel.studying.login.NewArticleService;
 import com.github.sjubusel.studying.login.NewsArticle;
 import com.github.sjubusel.studying.login.NewsArticleDao;
+import com.github.sjubusel.studying.login.impl.DefNewsArticleDao;
 
 import java.time.ZonedDateTime;
 import java.util.Map;

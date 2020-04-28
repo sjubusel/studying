@@ -3,7 +3,7 @@ package com.github.sjubusel.studying.login.servlet;
 import com.github.sjubusel.studying.login.AuthUser;
 import com.github.sjubusel.studying.login.AuthUserService;
 import com.github.sjubusel.studying.login.Util;
-import com.github.sjubusel.studying.login.impl.DefAuthUserService;
+import com.github.sjubusel.studying.login.implementation.DefAuthUserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
