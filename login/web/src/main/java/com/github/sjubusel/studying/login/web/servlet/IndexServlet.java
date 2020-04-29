@@ -1,6 +1,6 @@
-package com.github.sjubusel.studying.login.servlet;
+package com.github.sjubusel.studying.login.web.servlet;
 
-import com.github.sjubusel.studying.login.Util;
+import com.github.sjubusel.studying.login.web.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

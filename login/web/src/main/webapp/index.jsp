@@ -1,4 +1,4 @@
-<%@ page import="com.github.sjubusel.studying.login.Util" %>
+<%@ page import="com.github.sjubusel.studying.login.web.Util" %>
 <%--
   Created by IntelliJ IDEA.
   User: SB

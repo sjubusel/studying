@@ -1,4 +1,4 @@
-package com.github.sjubusel.studying.login;
+package com.github.sjubusel.studying.login.web;
 
 import com.github.sjubusel.studying.login.service.AuthUserService;
 import com.github.sjubusel.studying.login.service.implementation.DefAuthUserService;

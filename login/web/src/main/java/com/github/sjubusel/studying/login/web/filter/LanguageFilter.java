@@ -1,4 +1,4 @@
-package com.github.sjubusel.studying.login.filter;
+package com.github.sjubusel.studying.login.web.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
