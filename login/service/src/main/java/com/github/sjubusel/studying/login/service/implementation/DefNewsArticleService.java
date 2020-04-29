@@ -1,6 +1,6 @@
-package com.github.sjubusel.studying.login.implementation;
+package com.github.sjubusel.studying.login.service.implementation;
 
-import com.github.sjubusel.studying.login.NewArticleService;
+import com.github.sjubusel.studying.login.service.NewArticleService;
 import com.github.sjubusel.studying.login.model.NewsArticle;
 import com.github.sjubusel.studying.login.dao.NewsArticleDao;
 import com.github.sjubusel.studying.login.dao.impl.DefNewsArticleDao;

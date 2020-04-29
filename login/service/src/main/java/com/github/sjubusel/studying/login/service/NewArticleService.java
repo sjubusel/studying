@@ -1,4 +1,4 @@
-package com.github.sjubusel.studying.login;
+package com.github.sjubusel.studying.login.service;
 
 import com.github.sjubusel.studying.login.model.NewsArticle;
 

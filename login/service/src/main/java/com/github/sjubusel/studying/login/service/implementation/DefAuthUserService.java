@@ -1,8 +1,8 @@
-package com.github.sjubusel.studying.login.implementation;
+package com.github.sjubusel.studying.login.service.implementation;
 
 import com.github.sjubusel.studying.login.model.AuthUser;
 import com.github.sjubusel.studying.login.dao.AuthUserDao;
-import com.github.sjubusel.studying.login.AuthUserService;
+import com.github.sjubusel.studying.login.service.AuthUserService;
 import com.github.sjubusel.studying.login.model.Role;
 import com.github.sjubusel.studying.login.dao.impl.DefAuthUserDao;
 

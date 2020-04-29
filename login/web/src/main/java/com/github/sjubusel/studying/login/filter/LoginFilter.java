@@ -1,8 +1,8 @@
 package com.github.sjubusel.studying.login.filter;
 
-import com.github.sjubusel.studying.login.AuthUserService;
+import com.github.sjubusel.studying.login.service.AuthUserService;
 import com.github.sjubusel.studying.login.Util;
-import com.github.sjubusel.studying.login.implementation.DefAuthUserService;
+import com.github.sjubusel.studying.login.service.implementation.DefAuthUserService;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

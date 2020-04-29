@@ -1,9 +1,9 @@
 package com.github.sjubusel.studying.login.servlet;
 
-import com.github.sjubusel.studying.login.NewArticleService;
+import com.github.sjubusel.studying.login.service.NewArticleService;
 import com.github.sjubusel.studying.login.model.NewsArticle;
 import com.github.sjubusel.studying.login.Util;
-import com.github.sjubusel.studying.login.implementation.DefNewsArticleService;
+import com.github.sjubusel.studying.login.service.implementation.DefNewsArticleService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
