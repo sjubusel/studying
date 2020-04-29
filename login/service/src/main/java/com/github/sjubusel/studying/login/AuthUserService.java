@@ -1,5 +1,7 @@
 package com.github.sjubusel.studying.login;
 
+import com.github.sjubusel.studying.login.model.AuthUser;
+
 public interface AuthUserService {
     AuthUser login(String login, String password);
 

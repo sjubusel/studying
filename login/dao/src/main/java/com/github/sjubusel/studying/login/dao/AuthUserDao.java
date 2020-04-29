@@ -1,6 +1,6 @@
 package com.github.sjubusel.studying.login.dao;
 
-import com.github.sjubusel.studying.login.AuthUser;
+import com.github.sjubusel.studying.login.model.AuthUser;
 
 public interface AuthUserDao {
     AuthUser getByLogin(String login);

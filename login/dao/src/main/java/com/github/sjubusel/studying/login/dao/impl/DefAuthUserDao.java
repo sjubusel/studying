@@ -1,8 +1,8 @@
 package com.github.sjubusel.studying.login.dao.impl;
 
-import com.github.sjubusel.studying.login.AuthUser;
+import com.github.sjubusel.studying.login.model.AuthUser;
 import com.github.sjubusel.studying.login.dao.AuthUserDao;
-import com.github.sjubusel.studying.login.Role;
+import com.github.sjubusel.studying.login.model.Role;
 
 import java.util.Collection;
 import java.util.HashMap;

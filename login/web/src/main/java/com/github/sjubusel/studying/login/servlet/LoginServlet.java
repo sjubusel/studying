@@ -1,6 +1,6 @@
 package com.github.sjubusel.studying.login.servlet;
 
-import com.github.sjubusel.studying.login.AuthUser;
+import com.github.sjubusel.studying.login.model.AuthUser;
 import com.github.sjubusel.studying.login.AuthUserService;
 import com.github.sjubusel.studying.login.Util;
 import com.github.sjubusel.studying.login.implementation.DefAuthUserService;

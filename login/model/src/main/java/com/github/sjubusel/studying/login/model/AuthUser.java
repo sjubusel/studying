@@ -1,4 +1,4 @@
-package com.github.sjubusel.studying.login;
+package com.github.sjubusel.studying.login.model;
 
 public class AuthUser {
     private String login;

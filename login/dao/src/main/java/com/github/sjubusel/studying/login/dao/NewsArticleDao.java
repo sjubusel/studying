@@ -1,6 +1,6 @@
 package com.github.sjubusel.studying.login.dao;
 
-import com.github.sjubusel.studying.login.NewsArticle;
+import com.github.sjubusel.studying.login.model.NewsArticle;
 
 import java.time.ZonedDateTime;
 import java.util.Map;

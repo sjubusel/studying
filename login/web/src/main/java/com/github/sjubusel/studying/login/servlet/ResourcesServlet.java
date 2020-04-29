@@ -1,7 +1,7 @@
 package com.github.sjubusel.studying.login.servlet;
 
 import com.github.sjubusel.studying.login.NewArticleService;
-import com.github.sjubusel.studying.login.NewsArticle;
+import com.github.sjubusel.studying.login.model.NewsArticle;
 import com.github.sjubusel.studying.login.Util;
 import com.github.sjubusel.studying.login.implementation.DefNewsArticleService;
 
