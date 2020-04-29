@@ -1,7 +1,7 @@
-package com.github.sjubusel.studying.login.impl;
+package com.github.sjubusel.studying.login.dao.impl;
 
 import com.github.sjubusel.studying.login.AuthUser;
-import com.github.sjubusel.studying.login.AuthUserDao;
+import com.github.sjubusel.studying.login.dao.AuthUserDao;
 import com.github.sjubusel.studying.login.Role;
 
 import java.util.Collection;

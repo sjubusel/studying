@@ -1,10 +1,10 @@
 package com.github.sjubusel.studying.login.implementation;
 
 import com.github.sjubusel.studying.login.AuthUser;
-import com.github.sjubusel.studying.login.AuthUserDao;
+import com.github.sjubusel.studying.login.dao.AuthUserDao;
 import com.github.sjubusel.studying.login.AuthUserService;
 import com.github.sjubusel.studying.login.Role;
-import com.github.sjubusel.studying.login.impl.DefAuthUserDao;
+import com.github.sjubusel.studying.login.dao.impl.DefAuthUserDao;
 
 import java.util.UUID;
 

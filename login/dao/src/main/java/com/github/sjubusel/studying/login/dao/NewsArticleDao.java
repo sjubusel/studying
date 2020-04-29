@@ -1,4 +1,6 @@
-package com.github.sjubusel.studying.login;
+package com.github.sjubusel.studying.login.dao;
+
+import com.github.sjubusel.studying.login.NewsArticle;
 
 import java.time.ZonedDateTime;
 import java.util.Map;
