@@ -17,7 +17,7 @@ public class DataBaseConnector implements Connector {
 
     private static void loadDatabaseDriver() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
