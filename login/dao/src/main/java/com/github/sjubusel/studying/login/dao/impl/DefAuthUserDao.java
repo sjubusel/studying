@@ -3,10 +3,13 @@ package com.github.sjubusel.studying.login.dao.impl;
 import com.github.sjubusel.studying.login.dao.AuthUserDao;
 import com.github.sjubusel.studying.login.model.AuthUser;
 import com.github.sjubusel.studying.login.model.Role;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
 public class DefAuthUserDao implements AuthUserDao {
+    private Logger logger = LoggerFactory.getLogger(DefAuthUserDao.class);
     private DataBaseConnector connector;
 
     public DefAuthUserDao() {
