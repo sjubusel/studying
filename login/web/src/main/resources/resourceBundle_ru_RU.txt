@@ -18,3 +18,5 @@ resourcesJsp.logout=Выйти
 resourcesJsp.newsHeading=Заголовок
 resourcesJsp.newsText=Текст
 pseudoHeaderJsp.homepageLink=Главная страница
+resourcesJsp.deleteButton=удалить
+resourcesJsp.updateButton=редактировать
