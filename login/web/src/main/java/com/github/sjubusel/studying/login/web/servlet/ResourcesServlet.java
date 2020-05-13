@@ -38,13 +38,15 @@ public class ResourcesServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         req.setCharacterEncoding("UTF-8");
         String heading = req.getParameter("heading");
         String bodyArticle = req.getParameter("bodyArticle");
         String author = req.getParameter("author");
-        newArticleService.saveArticle(new NewsArticle(heading, ZonedDateTime.now(),
-                bodyArticle, UUID.randomUUID().toString(), author));
+        if (heading != null && bodyArticle != null) {
+            newArticleService.saveArticle(new NewsArticle(heading, ZonedDateTime.now(),
+                    bodyArticle, UUID.randomUUID().toString(), author));
+        }
         Util.sendRedirect("resources", req, resp);
     }
 }

@@ -1,9 +1,10 @@
 package com.github.sjubusel.studying.login.service.implementation;
 
-import com.github.sjubusel.studying.login.service.NewArticleService;
-import com.github.sjubusel.studying.login.model.NewsArticle;
 import com.github.sjubusel.studying.login.dao.NewsArticleDao;
 import com.github.sjubusel.studying.login.dao.impl.DefNewsArticleDao;
+import com.github.sjubusel.studying.login.model.AuthUser;
+import com.github.sjubusel.studying.login.model.NewsArticle;
+import com.github.sjubusel.studying.login.service.NewArticleService;
 
 import java.time.ZonedDateTime;
 import java.util.Map;
@@ -37,5 +38,13 @@ public class DefNewsArticleService implements NewArticleService {
     @Override
     public String saveArticle(NewsArticle article) {
         return newsArticleDao.save(article);
+    }
+
+    @Override
+    public boolean deleteArticleByIdIfHasRights(String idToDelete, AuthUser authUser) {
+        if (authUser.getRole().toString().equals("ADMIN")) {
+            return newsArticleDao.deleteById(idToDelete);
+        }
+        return false;
     }
 }

@@ -9,4 +9,6 @@ public interface NewsArticleDao {
     Map<ZonedDateTime, NewsArticle> getArticles();
 
     String save(NewsArticle article);
+
+    boolean deleteById(String idToDelete);
 }

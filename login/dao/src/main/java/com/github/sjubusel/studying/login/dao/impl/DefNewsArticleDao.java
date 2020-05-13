@@ -24,7 +24,9 @@ public class DefNewsArticleDao implements NewsArticleDao {
                     "    datetime LONGTEXT     NOT NULL," +
                     "    text     BLOB         NOT NULL," +
                     "    news_id  VARCHAR(255) NOT NULL," +
-                    "    author   VARCHAR(255) NOT NULL" +
+                    "    author   VARCHAR(255) NOT NULL," +
+                    "    status   VARCHAR(255)  NULL," +
+                    "    delete_dateTime   VARCHAR(255)  NULL" +
                     ")";
             statement.executeUpdate(sql);
         } catch (SQLException e) {
@@ -51,7 +53,8 @@ public class DefNewsArticleDao implements NewsArticleDao {
     @Override
     public Map<ZonedDateTime, NewsArticle> getArticles() {
         try (Connection connection = connector.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM news_article");
+            PreparedStatement statement = connection.prepareStatement
+                    ("SELECT * FROM news_article WHERE status IS NULL ORDER BY datetime desc");
             ResultSet resultSet = statement.executeQuery();
             HashMap<ZonedDateTime, NewsArticle> map = new HashMap<>();
             while (resultSet.next()) {
@@ -85,6 +88,21 @@ public class DefNewsArticleDao implements NewsArticleDao {
             return article.getNewsId();
         } catch (SQLException e) {
             logger.error("Gone wrong while saving article \"{}\" to \"news_article\"-table", article, e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean deleteById(String idToDelete) {
+        try (Connection connection = connector.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement
+                    ("UPDATE test_jdbc.news_article t SET t.status = 'deleted', t.delete_datetime = ? WHERE t.news_id LIKE ?");
+            statement.setObject(1, ZonedDateTime.now().toLocalDateTime());
+            statement.setString(2, idToDelete);
+            int i = statement.executeUpdate();
+            return i > 0;
+        } catch (SQLException e) {
+            logger.error("Gone wrong while deleting an article \"{}\" from \"news_article table\"", idToDelete, e);
             throw new RuntimeException(e);
         }
     }

@@ -22,6 +22,10 @@
 
 <a href="${pageContext.request.contextPath}/logout"><fmt:message bundle="${text}" key="resourcesJsp.logout"/></a>
 
+<c:if test="${sessionScope.deleteMessage !=null}">
+    <p>${sessionScope.deleteMessage}</p>
+    <c:remove var="deleteMessage" scope="session"/>
+</c:if>
 
 <c:if test="${requestScope.articles != null}">
     <c:forEach items="${requestScope.articles}" var="article">
@@ -29,6 +33,21 @@
         <p><c:out value="${article.value.author}"/></p>
         <p><c:out value="${article.key}"/></p>
         <p><c:out value="${article.value.text}"/></p>
+        <%--        TODO edit article--%>
+        <%--        <form method="post" action="...">--%>
+        <%--            <button formaction="${pageContext.request.contextPath}/..." formmethod="post" name="idToUpdate"--%>
+        <%--                    value="${article.value.newsId}" type="submit">--%>
+        <%--                <fmt:message bundle="${text}" key="resourcesJsp.updateButton"/>--%>
+        <%--            </button>--%>
+        <%--        </form>--%>
+        <form method="post" action="${pageContext.request.contextPath}/deleteNewsArticle">
+            <button formaction="${pageContext.request.contextPath}/deleteNewsArticle" formmethod="post"
+                    name="idToDelete"
+                    value="${article.value.newsId}" type="submit">
+                <fmt:message bundle="${text}" key="resourcesJsp.deleteButton"/>
+            </button>
+        </form>
+        <%--        <br/>--%>
         <p>$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$</p>
     </c:forEach>
 </c:if>
