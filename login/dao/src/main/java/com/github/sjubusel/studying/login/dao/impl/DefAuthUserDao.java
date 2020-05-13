@@ -9,7 +9,8 @@ import org.slf4j.LoggerFactory;
 import java.sql.*;
 
 public class DefAuthUserDao implements AuthUserDao {
-    private Logger logger = LoggerFactory.getLogger(DefAuthUserDao.class);
+    private static final Logger logger = LoggerFactory.getLogger(DefAuthUserDao.class);
+
     private DataBaseConnector connector;
 
     public DefAuthUserDao() {
@@ -24,6 +25,7 @@ public class DefAuthUserDao implements AuthUserDao {
                     ")";
             statement.executeUpdate(sql);
         } catch (SQLException e) {
+            logger.error("Gone wrong while checking of a creation of the main SQL table \"{}\"", "auth_user", e);
             throw new RuntimeException(e);
         }
     }
@@ -48,7 +50,6 @@ public class DefAuthUserDao implements AuthUserDao {
         try (Connection connection = this.connector.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT login, password, role, id FROM auth_user as a WHERE login = ?");
             statement.setString(1, login);
-//            statement.setNString(1, login);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 return new AuthUser(resultSet.getString("login"),
@@ -57,6 +58,7 @@ public class DefAuthUserDao implements AuthUserDao {
                         resultSet.getString("id"));
             } else return null;
         } catch (SQLException e) {
+            logger.error("Gone wrong while selecting user \"{}\" by login", login, e);
             throw new RuntimeException(e);
         }
     }
@@ -72,6 +74,7 @@ public class DefAuthUserDao implements AuthUserDao {
             statement.setString(4, user.getRole().toString());
             statement.executeUpdate();
         } catch (SQLException e) {
+            logger.error("Gone wrong while saving user \"{}\"", user, e);
             throw new RuntimeException(e);
         }
     }
@@ -89,6 +92,7 @@ public class DefAuthUserDao implements AuthUserDao {
                         resultSet.getString("id"));
             } else return null;
         } catch (SQLException e) {
+            logger.error("Gone wrong while selecting user by userId  \"{}\"", userId, e);
             throw new RuntimeException(e);
         }
     }
@@ -100,6 +104,7 @@ public class DefAuthUserDao implements AuthUserDao {
             statement.setString(1, login);
             return statement.executeQuery().next();
         } catch (SQLException e) {
+            logger.error("Gone wrong while verifying whether user \"{}\" exists", login, e);
             throw new RuntimeException(e);
         }
     }
