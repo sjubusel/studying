@@ -51,12 +51,12 @@ public class DefNewsArticleDao implements NewsArticleDao {
     }
 
     @Override
-    public Map<ZonedDateTime, NewsArticle> getArticles() {
+    public List<NewsArticle> getArticles() {
         try (Connection connection = connector.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
                     ("SELECT * FROM news_article WHERE status IS NULL ORDER BY datetime desc");
             ResultSet resultSet = statement.executeQuery();
-            HashMap<ZonedDateTime, NewsArticle> map = new HashMap<>();
+            List<NewsArticle> list = new LinkedList<>();
             while (resultSet.next()) {
                 String header = resultSet.getString("header");
                 String text = resultSet.getString("text");
@@ -64,9 +64,9 @@ public class DefNewsArticleDao implements NewsArticleDao {
                 String author = resultSet.getString("author");
                 ZonedDateTime dateTime = ZonedDateTime.of
                         (resultSet.getObject("datetime", LocalDateTime.class), ZoneId.systemDefault());
-                map.put(dateTime, new NewsArticle(header, dateTime, text, news_id, author));
+                list.add(new NewsArticle(header, dateTime, text, news_id, author));
             }
-            return map;
+            return list;
         } catch (SQLException e) {
             logger.error("Gone wrong while retrieving and converting data from \"news_article\"", e);
             throw new RuntimeException(e);

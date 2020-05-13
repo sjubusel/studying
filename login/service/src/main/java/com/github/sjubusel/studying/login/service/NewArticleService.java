@@ -3,11 +3,10 @@ package com.github.sjubusel.studying.login.service;
 import com.github.sjubusel.studying.login.model.AuthUser;
 import com.github.sjubusel.studying.login.model.NewsArticle;
 
-import java.time.ZonedDateTime;
-import java.util.Map;
+import java.util.List;
 
 public interface NewArticleService {
-    Map<ZonedDateTime, NewsArticle> getNewsArticles();
+    List<NewsArticle> getNewsArticles();
 
     String saveArticle(NewsArticle article);
 

@@ -6,8 +6,7 @@ import com.github.sjubusel.studying.login.model.AuthUser;
 import com.github.sjubusel.studying.login.model.NewsArticle;
 import com.github.sjubusel.studying.login.service.NewArticleService;
 
-import java.time.ZonedDateTime;
-import java.util.Map;
+import java.util.List;
 
 public class DefNewsArticleService implements NewArticleService {
     private NewsArticleDao newsArticleDao = DefNewsArticleDao.getInstance();
@@ -31,7 +30,7 @@ public class DefNewsArticleService implements NewArticleService {
     }
 
     @Override
-    public Map<ZonedDateTime, NewsArticle> getNewsArticles() {
+    public List<NewsArticle> getNewsArticles() {
         return newsArticleDao.getArticles();
     }
 

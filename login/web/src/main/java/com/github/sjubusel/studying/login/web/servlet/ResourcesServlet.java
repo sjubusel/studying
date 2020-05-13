@@ -1,9 +1,9 @@
 package com.github.sjubusel.studying.login.web.servlet;
 
-import com.github.sjubusel.studying.login.service.NewArticleService;
 import com.github.sjubusel.studying.login.model.NewsArticle;
-import com.github.sjubusel.studying.login.web.Util;
+import com.github.sjubusel.studying.login.service.NewArticleService;
 import com.github.sjubusel.studying.login.service.implementation.DefNewsArticleService;
+import com.github.sjubusel.studying.login.web.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
@@ -23,15 +24,14 @@ public class ResourcesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Map<ZonedDateTime, NewsArticle> newsArticles = newArticleService.getNewsArticles();
-        Map<String, NewsArticle> articles = new LinkedHashMap<>();
+        List<NewsArticle> list = newArticleService.getNewsArticles();
         String languageSessionAttr = (String) req.getSession().getAttribute("language");
         String[] localeParts = languageSessionAttr.split("_");
-        for (Map.Entry<ZonedDateTime, NewsArticle> entry : newsArticles.entrySet()) {
-            ZonedDateTime zonedDateTime = entry.getKey();
-            String localeDateTime = Util.getZonedDateTimeToString(zonedDateTime,
-                    new Locale(localeParts[0], localeParts[1]));
-            articles.put(localeDateTime, entry.getValue());
+        Locale locale = new Locale(localeParts[0], localeParts[1]);
+        Map<String, NewsArticle> articles = new LinkedHashMap<>();
+        for (NewsArticle article : list) {
+            String localeDateTime = Util.getZonedDateTimeToString(article.getArticleDate(), locale);
+            articles.put(localeDateTime, article);
         }
         req.setAttribute("articles", articles);
         Util.forwardToJsp("resources", req, resp);
