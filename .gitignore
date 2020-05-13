@@ -143,6 +143,6 @@ buildNumber.properties
 /.idea/
 /login/web/.idea/
 /login/web/src/main/resources/native2asciiFromTxtToProperties.bat
-/login/web/src/main/resources/resourceBundle.txt
-/login/web/src/main/resources/resourceBundle_en_US.txt
-/login/web/src/main/resources/resourceBundle_ru_RU.txt
+#/login/web/src/main/resources/resourceBundle.txt
+#/login/web/src/main/resources/resourceBundle_en_US.txt
+#/login/web/src/main/resources/resourceBundle_ru_RU.txt
