@@ -2,6 +2,8 @@ package com.github.sjubusel.studying.login.dao.impl;
 
 import com.github.sjubusel.studying.login.model.NewsArticle;
 import com.github.sjubusel.studying.login.dao.NewsArticleDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -10,6 +12,7 @@ import java.time.ZonedDateTime;
 import java.util.*;
 
 public class DefNewsArticleDao implements NewsArticleDao {
+    private static final Logger logger = LoggerFactory.getLogger(DefNewsArticleDao.class);
     private DataBaseConnector connector;
 
     private DefNewsArticleDao() {
@@ -25,6 +28,7 @@ public class DefNewsArticleDao implements NewsArticleDao {
                     ")";
             statement.executeUpdate(sql);
         } catch (SQLException e) {
+            logger.error("Gone wrong while checking of a creation of the main SQL table \"{}\"", "news_article", e);
             throw new RuntimeException(e);
         }
     }
@@ -61,6 +65,7 @@ public class DefNewsArticleDao implements NewsArticleDao {
             }
             return map;
         } catch (SQLException e) {
+            logger.error("Gone wrong while retrieving and converting data from \"news_article\"", e);
             throw new RuntimeException(e);
         }
     }
@@ -79,6 +84,7 @@ public class DefNewsArticleDao implements NewsArticleDao {
             statement.executeUpdate();
             return article.getNewsId();
         } catch (SQLException e) {
+            logger.error("Gone wrong while saving article \"{}\" to \"news_article\"-table", article, e);
             throw new RuntimeException(e);
         }
     }
