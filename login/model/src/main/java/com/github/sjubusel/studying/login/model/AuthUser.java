@@ -28,4 +28,14 @@ public class AuthUser {
     public String getUserId() {
         return userId;
     }
+
+    @Override
+    public String toString() {
+        return "AuthUser{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
 }
