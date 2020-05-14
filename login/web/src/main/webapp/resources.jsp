@@ -45,7 +45,6 @@
         <p><c:out value="${article.value.author}"/></p>
         <p><c:out value="${article.key}"/></p>
         <p><c:out value="${article.value.text}"/></p>
-        <%--        TODO edit article--%>
         <form method="post" action="${pageContext.request.contextPath}/editNewsArticle">
             <button formaction="${pageContext.request.contextPath}/editNewsArticle" formmethod="post" name="idToEdit"
                     value="${article.value.newsId}" type="submit">
