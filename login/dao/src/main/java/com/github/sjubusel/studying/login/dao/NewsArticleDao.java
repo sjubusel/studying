@@ -10,4 +10,6 @@ public interface NewsArticleDao {
     String save(NewsArticle article);
 
     boolean deleteById(String idToDelete);
+
+    boolean restoreById(String idToRestore);
 }

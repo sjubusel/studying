@@ -46,4 +46,9 @@ public class DefNewsArticleService implements NewArticleService {
         }
         return false;
     }
+
+    @Override
+    public boolean restoreArticleById(String idToRestore) {
+        return newsArticleDao.restoreById(idToRestore);
+    }
 }

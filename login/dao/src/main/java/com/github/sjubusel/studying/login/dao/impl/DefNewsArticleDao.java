@@ -106,4 +106,18 @@ public class DefNewsArticleDao implements NewsArticleDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public boolean restoreById(String idToRestore) {
+        try (Connection connection = connector.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement
+                    ("UPDATE test_jdbc.news_article t SET t.status = null WHERE t.news_id LIKE ?");
+            statement.setString(1, idToRestore);
+            int i = statement.executeUpdate();
+            return i > 0;
+        } catch (SQLException e) {
+            logger.error("Gone wrong while restoring an article \"{}\" from \"news_article table\"", idToRestore, e);
+            throw new RuntimeException(e);
+        }
+    }
 }

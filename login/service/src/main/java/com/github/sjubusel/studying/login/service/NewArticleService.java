@@ -11,4 +11,6 @@ public interface NewArticleService {
     String saveArticle(NewsArticle article);
 
     boolean deleteArticleByIdIfHasRights(String idToDelete, AuthUser authUser);
+
+    boolean restoreArticleById(String idToRestore);
 }

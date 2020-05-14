@@ -25,6 +25,18 @@
 <c:if test="${sessionScope.deleteMessage !=null}">
     <p>${sessionScope.deleteMessage}</p>
     <c:remove var="deleteMessage" scope="session"/>
+    <form method="post" action="${pageContext.request.contextPath}/restoreArticle">
+        <button formaction="${pageContext.request.contextPath}/restoreArticle" formmethod="post"
+                name="idToRestore"
+                value="${sessionScope.deletedId}" type="submit">
+            <fmt:message bundle="${text}" key="resourcesJsp.restoreButton"/>
+        </button>
+    </form>
+</c:if>
+
+<c:if test="${sessionScope.restoreMessage !=null}">
+    <p>${sessionScope.restoreMessage}</p>
+    <c:remove var="restoreMessage" scope="session"/>
 </c:if>
 
 <c:if test="${requestScope.articles != null}">
