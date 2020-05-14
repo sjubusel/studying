@@ -120,4 +120,47 @@ public class DefNewsArticleDao implements NewsArticleDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public NewsArticle fetchById(String idToFetch) {
+        try (Connection connection = connector.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement
+                    ("SELECT * FROM news_article WHERE news_id = ?");
+            statement.setString(1, idToFetch);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String header = resultSet.getString("header");
+                String text = resultSet.getString("text");
+                String news_id = resultSet.getString("news_id");
+                String author = resultSet.getString("author");
+                ZonedDateTime dateTime = ZonedDateTime.of
+                        (resultSet.getObject("datetime", LocalDateTime.class), ZoneId.systemDefault());
+                return new NewsArticle(header, dateTime, text, news_id, author);
+            }
+            return null;
+        } catch (SQLException e) {
+            logger.error("Gone wrong while fetching an article \"{}\" from \"news_article table\"", idToFetch, e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean saveEditedArticle(NewsArticle article) {
+        try (Connection connection = connector.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement
+                    ("UPDATE test_jdbc.news_article t " +
+                            "SET t.header = ?, t.text = ?, t.editor = ?, t.edit_datetime = ? " +
+                            "WHERE t.news_id = ?");
+            statement.setString(1, article.getHeader());
+            statement.setString(2, article.getText());
+            statement.setString(3, article.getAuthor());
+            statement.setObject(4, article.getArticleDate().toLocalDateTime());
+            statement.setString(5, article.getNewsId());
+            int i = statement.executeUpdate();
+            return i > 0;
+        } catch (SQLException e) {
+            logger.error("Gone wrong while editing an article \"{}\" from \"news_article table\"", article.getNewsId(), e);
+            throw new RuntimeException(e);
+        }
+    }
 }

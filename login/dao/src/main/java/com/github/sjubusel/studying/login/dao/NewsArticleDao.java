@@ -12,4 +12,8 @@ public interface NewsArticleDao {
     boolean deleteById(String idToDelete);
 
     boolean restoreById(String idToRestore);
+
+    NewsArticle fetchById(String idToFetch);
+
+    boolean saveEditedArticle(NewsArticle article);
 }

@@ -51,4 +51,17 @@ public class DefNewsArticleService implements NewArticleService {
     public boolean restoreArticleById(String idToRestore) {
         return newsArticleDao.restoreById(idToRestore);
     }
+
+    @Override
+    public NewsArticle fetchNewsArticleByIdIfHasRights(String idToFetch, AuthUser authUser) {
+        if (authUser.getRole().toString().equals("ADMIN")) {
+            return newsArticleDao.fetchById(idToFetch);
+        }
+        return null;
+    }
+
+    @Override
+    public boolean saveEditedArticle(NewsArticle article) {
+        return newsArticleDao.saveEditedArticle(article);
+    }
 }

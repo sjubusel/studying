@@ -13,4 +13,8 @@ public interface NewArticleService {
     boolean deleteArticleByIdIfHasRights(String idToDelete, AuthUser authUser);
 
     boolean restoreArticleById(String idToRestore);
+
+    NewsArticle fetchNewsArticleByIdIfHasRights(String idToFetch, AuthUser authUser);
+
+    boolean saveEditedArticle(NewsArticle article);
 }

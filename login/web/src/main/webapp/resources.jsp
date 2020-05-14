@@ -46,12 +46,12 @@
         <p><c:out value="${article.key}"/></p>
         <p><c:out value="${article.value.text}"/></p>
         <%--        TODO edit article--%>
-        <%--        <form method="post" action="...">--%>
-        <%--            <button formaction="${pageContext.request.contextPath}/..." formmethod="post" name="idToUpdate"--%>
-        <%--                    value="${article.value.newsId}" type="submit">--%>
-        <%--                <fmt:message bundle="${text}" key="resourcesJsp.updateButton"/>--%>
-        <%--            </button>--%>
-        <%--        </form>--%>
+        <form method="post" action="${pageContext.request.contextPath}/editNewsArticle">
+            <button formaction="${pageContext.request.contextPath}/editNewsArticle" formmethod="post" name="idToEdit"
+                    value="${article.value.newsId}" type="submit">
+                <fmt:message bundle="${text}" key="resourcesJsp.editButton"/>
+            </button>
+        </form>
         <form method="post" action="${pageContext.request.contextPath}/deleteNewsArticle">
             <button formaction="${pageContext.request.contextPath}/deleteNewsArticle" formmethod="post"
                     name="idToDelete"

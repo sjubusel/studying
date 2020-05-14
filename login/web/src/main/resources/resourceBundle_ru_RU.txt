@@ -22,3 +22,7 @@ resourcesJsp.deleteButton=удалить
 resourcesJsp.updateButton=редактировать
 resourcesJsp.restoreButton=восстановить
 resourcesJsp.editButton=редактировать
+editNewsArticleJsp.title=Редактировать новость
+editNewsArticleJsp.headline=Редактировать выбранную новость
+editNewsArticleJsp.backToResources=Назад к новостям
+editNewsArticleJsp.nullToEdit=Ни одна новость не выбрана для редактирования
