@@ -20,3 +20,4 @@ resourcesJsp.newsText=Текст
 pseudoHeaderJsp.homepageLink=Главная страница
 resourcesJsp.deleteButton=удалить
 resourcesJsp.updateButton=редактировать
+resourcesJsp.restoreButton=restore
