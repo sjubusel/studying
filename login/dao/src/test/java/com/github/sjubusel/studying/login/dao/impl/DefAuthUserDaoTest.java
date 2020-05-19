@@ -61,9 +61,8 @@ class DefAuthUserDaoTest {
     @DisplayName("save AuthUser with Login that already exists")
     void saveAuthUserWithInvalidLogin() {
         String login = "testUser";
-        Assertions.assertThrows(RuntimeException.class, () -> {
-            authUserDao.saveAuthUser(new AuthUser(login, login, Role.USER, login));
-        });
+        Assertions.assertThrows(RuntimeException.class,
+                () -> authUserDao.saveAuthUser(new AuthUser(login, login, Role.USER, login)));
     }
 
     @Test
