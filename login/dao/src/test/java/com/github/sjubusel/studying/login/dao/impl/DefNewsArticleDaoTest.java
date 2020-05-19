@@ -150,6 +150,37 @@ class DefNewsArticleDaoTest {
 
     @Test
     void saveEditedArticle() {
-//        fail();
+        String element = "один";
+        NewsArticle article = new NewsArticle(element, ZonedDateTime.now(), "new Text", element, "editor");
+
+        boolean actual = dao.saveEditedArticle(article);
+        NewsArticle articleRestored = restoreDbToInitConfigAndGetRowRestored(element);
+
+        assertTrue(actual);
+        assertAll(() -> assertEquals(element, articleRestored.getHeader()),
+                () -> assertEquals(element, articleRestored.getText()));
+    }
+
+    private NewsArticle restoreDbToInitConfigAndGetRowRestored(String element) {
+        try (Connection connection = connector.getConnection()) {
+            PreparedStatement statementUpdate = connection.prepareStatement("UPDATE news_article t " +
+                    "SET t.text = ?, t.editor = null, t.edit_datetime = null WHERE news_id = ?");
+            statementUpdate.setString(1, element);
+            statementUpdate.setString(2, element);
+            statementUpdate.executeUpdate();
+            PreparedStatement statementSelect = connection.prepareStatement
+                    ("SELECT * FROM news_article t WHERE t.news_id = ?");
+            statementSelect.setString(1, element);
+            ResultSet rs = statementSelect.executeQuery();
+            if (rs.next()) {
+                return new NewsArticle(rs.getString("header"), ZonedDateTime.now(),
+                        rs.getString("text"), null, "null");
+            } else {
+                fail();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return new NewsArticle(null, null, null, null, null);
     }
 }
