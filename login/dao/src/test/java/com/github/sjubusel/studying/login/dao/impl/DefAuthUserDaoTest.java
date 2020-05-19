@@ -59,17 +59,46 @@ class DefAuthUserDaoTest {
 
     @Test
     @DisplayName("save AuthUser with Login that already exists")
-    void saveAuthUser() {
-
+    void saveAuthUserWithInvalidLogin() {
+        String login = "testUser";
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            authUserDao.saveAuthUser(new AuthUser(login, login, Role.USER, login));
+        });
     }
 
     @Test
-    @DisplayName("get AuthUer by Id")
-    void getByUserId() {
+    @DisplayName("get AuthUer by Id, which belongs to Valid User")
+    void getByUserIdOfValidUser() {
+        String userIdOfValidUser = "0";
+        AuthUser user = authUserDao.getByUserId(userIdOfValidUser);
+        Assertions.assertEquals("0", user.getUserId());
+        Assertions.assertEquals("testUser", user.getLogin());
+        Assertions.assertEquals("testUser", user.getPassword());
+        Assertions.assertEquals("USER", user.getRole().toString());
+    }
+
+    @Test
+    @DisplayName("get AuthUer by Id, which belongs to Invalid User")
+    void getByUserIdOfInvalidUser() {
+        String userIdOfInvalidUser = "testUserToDelete";
+        AuthUser user = authUserDao.getByUserId(userIdOfInvalidUser);
+        Assertions.assertNull(user);
     }
 
     @Test
     @DisplayName("checks whether an AuthUser with LOGIN-parameter exists")
-    void containsLogin() {
+    void containsLoginThatExists() {
+        String login = "testUser";
+        boolean containsLogin = authUserDao.containsLogin(login);
+        Assertions.assertTrue(containsLogin);
+    }
+
+    @Test
+    @DisplayName("checks whether an AuthUser with LOGIN-parameter doesn't exist")
+    void containsLoginThatIsInvalid() {
+        String login = "testUserToDelete";
+        boolean containsLogin = authUserDao.containsLogin(login);
+        Assertions.assertFalse(containsLogin);
+
     }
 }
