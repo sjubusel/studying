@@ -64,7 +64,7 @@ public class DefAuthUserDao implements AuthUserDao {
     }
 
     @Override
-    public void saveAuthUser(AuthUser user) {
+    public int saveAuthUser(AuthUser user) {
         try (Connection connection = this.connector.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
                     ("INSERT INTO auth_user (id, login, password, role) VALUES(?,?,?,?)");
@@ -72,7 +72,7 @@ public class DefAuthUserDao implements AuthUserDao {
             statement.setString(2, user.getLogin());
             statement.setString(3, user.getPassword());
             statement.setString(4, user.getRole().toString());
-            statement.executeUpdate();
+            return statement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Gone wrong while saving user \"{}\"", user, e);
             throw new RuntimeException(e);

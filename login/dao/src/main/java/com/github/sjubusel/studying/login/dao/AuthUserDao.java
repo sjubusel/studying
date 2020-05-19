@@ -5,7 +5,7 @@ import com.github.sjubusel.studying.login.model.AuthUser;
 public interface AuthUserDao {
     AuthUser getByLogin(String login);
 
-    void saveAuthUser(AuthUser user);
+    int saveAuthUser(AuthUser user);
 
     AuthUser getByUserId(String userId);
 
