@@ -26,7 +26,9 @@ public class DefNewsArticleDao implements NewsArticleDao {
                     "    news_id  VARCHAR(255) NOT NULL," +
                     "    author   VARCHAR(255) NOT NULL," +
                     "    status   VARCHAR(255)  NULL," +
-                    "    delete_dateTime   VARCHAR(255)  NULL" +
+                    "    delete_dateTime   VARCHAR(255)  NULL," +
+                    "    editor   VARCHAR(255)  NULL," +
+                    "    edit_dateTime   LONGTEXT  NULL" +
                     ")";
             statement.executeUpdate(sql);
         } catch (SQLException e) {
@@ -96,7 +98,7 @@ public class DefNewsArticleDao implements NewsArticleDao {
     public boolean deleteById(String idToDelete) {
         try (Connection connection = connector.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
-                    ("UPDATE test_jdbc.news_article t SET t.status = 'deleted', t.delete_datetime = ? WHERE t.news_id LIKE ?");
+                    ("UPDATE news_article t SET t.status = 'deleted', t.delete_datetime = ? WHERE t.news_id LIKE ?");
             statement.setObject(1, ZonedDateTime.now().toLocalDateTime());
             statement.setString(2, idToDelete);
             int i = statement.executeUpdate();
@@ -111,7 +113,7 @@ public class DefNewsArticleDao implements NewsArticleDao {
     public boolean restoreById(String idToRestore) {
         try (Connection connection = connector.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
-                    ("UPDATE test_jdbc.news_article t SET t.status = null WHERE t.news_id LIKE ?");
+                    ("UPDATE news_article t SET t.status = null WHERE t.news_id LIKE ?");
             statement.setString(1, idToRestore);
             int i = statement.executeUpdate();
             return i > 0;
@@ -148,7 +150,7 @@ public class DefNewsArticleDao implements NewsArticleDao {
     public boolean saveEditedArticle(NewsArticle article) {
         try (Connection connection = connector.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
-                    ("UPDATE test_jdbc.news_article t " +
+                    ("UPDATE news_article t " +
                             "SET t.header = ?, t.text = ?, t.editor = ?, t.edit_datetime = ? " +
                             "WHERE t.news_id = ?");
             statement.setString(1, article.getHeader());
